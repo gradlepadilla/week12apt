@@ -88,7 +88,7 @@ class DOMManager {
         }
     }
 
-    static deleteRoom(houseId, roomId){
+    static deleteApartment(houseId, roomId) {
         for(let house of this.houses) {
             if(house.id == houseId) {
                 for(let room of house.rooms){
@@ -112,7 +112,7 @@ class DOMManager {
                 `<div id="${house.id}" class="card">
                 <div class="card-header">
                 <h2>${house.name}</h2>
-                <button class="btn btn-danger" onclick="DOMManager.deleteHouse(${house.id}')"> Delete</button>
+                <button class="btn btn-danger" onclick="DOMManager.deleteApartment(${house.id})">Delete</button>
                 </div>
 
                 <div class="card-body">
@@ -125,7 +125,7 @@ class DOMManager {
                 <input type="text" id="house.${house.id}-room-area" class ="form-control" placeholder="Room Area">
                 </div>
                 </div>
-                <button id="${house.id}-new-room" onclick="DOMManager.addRoom(${house.id}')" class="btn btn-primary form-control">Add</button>
+                <button id="${house.id}-new-room" onclick="DOMManager.addRoom(${house.id})" class="btn btn-primary form-control">Add</button>
              </div>
          </div>
     </div><br>`
@@ -133,17 +133,17 @@ class DOMManager {
             for(let room of house.rooms) {
                 $(`#${house.id}`).find('.card-body').append(
                     `<p>
-                    <span id="name-${room.id}"><strong>Name: </strong> ${room.name}</span>
-                    <span id="name-${room.id}"><strong>Name: </strong> ${room.name}</span>
-                    <button class="btn btn-danger" onclick="DOMManager.deleteRoom('${house.id}', '${room.id}')">Delete Room</button>`
+                    <span id="name-${room.id}"><strong> Title: </strong> "${room.name}"</span>
+                    <span id="name-${room.id}"><strong> Area: </strong> "${room.name}"</span>
+                    <button class="btn btn-danger" onclick="DOMManager.deleteApartment(${house.id}, ${room.id})">Delete Room</button>`
                 )
             }
         }
     }
 }
 
-$('#create-new-apt').click(() => {
-    DOMManager.createApartment($('#new-apt-name').val());
-    $('#new-apt-name').val(' ');
+$('#create-new-house').click(() => {
+    DOMManager.createApartment($('#new-house-name').val());
+    $('#new-house-name').val('');
 });
 DOMManager.getAllApartments();
