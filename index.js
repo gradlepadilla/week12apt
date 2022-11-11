@@ -106,7 +106,7 @@ class DOMManager {
     }
     static render(houses) {
         this.houses = houses;
-        $('app').empty();
+        $('#app').empty();
         for (let house of houses) {
             $('#app').prepend(
                 `<div id="${house.id}" class="card">
@@ -142,8 +142,8 @@ class DOMManager {
     }
 }
 
-$('#create-new-house').click(() => {
-    DOMManager.createApartment($('#new-house-name').val());
-    $('#new-house-name').val('');
+$('#create-new-apt').click(() => {
+    DOMManager.createApartment($('#new-apt-name').val());
+    $('#new-apt-name').val('');
 });
 DOMManager.getAllApartments();
