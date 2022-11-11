@@ -1,3 +1,5 @@
+//Project for Apartment Search. Helpful tool that will keep trackof your hunt for your dream apartment!
+
 class House {
     constructor(name) {
         this.name = name;
@@ -71,7 +73,7 @@ class DOMManager {
         .then(() => {
             return ApartmentService.getAllApartments();
         })
-        .then((houses) => this.render(houses));
+        .then((houses) => this.render(houses)); //this I had trouble with as the apartment itself would not deleted after created
     }
 
     static addRoom(id) {
@@ -104,7 +106,7 @@ class DOMManager {
             }
         }
     }
-    static render(houses) {
+    static render(houses) { // This was the toughest for me to perfect, consdiering the name came up as undefined after trial of getting the title and area to have a value other than undefined. 
         this.houses = houses;
         $('#app').empty();
         for (let house of houses) {
@@ -122,10 +124,10 @@ class DOMManager {
                         <input type="text" id="house.${house.id}-room-name" class ="form-control" placeholder="Room Name">
                 </div>
                 <div class="col-sm">
-                <input type="text" id="house.${house.id}-room-area" class ="form-control" placeholder="Room Area">
+                <input type="text" id="house.${house.id}-room-area" class ="form-control" placeholder="Room Area"> 
                 </div>
                 </div>
-                <button id="${house.id}-new-room" onclick="DOMManager.addRoom(${house.id})" class="btn btn-primary form-control">Add</button>
+                <button id="${house.id}-new-room" onclick="DOMManager.addRoom(${house.id})" class="btn btn-primary form-control">Add</button> 
              </div>
          </div>
     </div><br>`
@@ -135,7 +137,7 @@ class DOMManager {
                     `<p>
                     <span id="name-${room.id}"><strong> Title: </strong> "${room.name}"</span>
                     <span id="name-${room.id}"><strong> Area: </strong> "${room.name}"</span>
-                    <button class="btn btn-danger" onclick="DOMManager.deleteApartment(${house.id}, ${room.id})">Delete Room</button>`
+                    <button class="btn btn-danger" onclick="DOMManager.deleteApartment(${house.id}, ${room.id})">Delete Room</button>` //This was the tied in problem, where I had to remove the quotes to make it finished.
                 )
             }
         }
